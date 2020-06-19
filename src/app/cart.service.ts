@@ -21,21 +21,21 @@ export class CartService {
       price: product.price,
     };
     return this.http.put<IOrderDetail[]>(
-      environment.apiUrl + 'customerItems/' + environment.username,
+      environment.apiUrl + 'cartItems/customer/' + environment.username,
       orderDetail
     );
   }
   getOrderDetails(): Observable<IOrderDetail[]> {
     console.log('cart service ');
     return this.http.get<IOrderDetail[]>(
-      environment.apiUrl + '/customerItems/' + environment.username
+      environment.apiUrl + '/cartItems/customer/' + environment.username
     );
   }
 
   removeFromCart(productName: String): Observable<any> {
     return this.http.delete(
       environment.apiUrl +
-        '/customerItems/' +
+        '/cartItems/customer/' +
         environment.username +
         '/products/' +
         productName
@@ -44,7 +44,7 @@ export class CartService {
 
   clearCart(): Observable<any> {
     return this.http.delete(
-      environment.apiUrl + '/customerItems/' + environment.username
+      environment.apiUrl + '/cartItems/customer/' + environment.username
     );
   }
 }
