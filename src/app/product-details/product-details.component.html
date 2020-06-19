@@ -1,11 +1,12 @@
 <h2>Product Details</h2>
 
 <div *ngIf="product">
+  <div class="alert alert-warning" *ngIf="product.instock < 11">
+    <strong>  Only {{ product.instock }} in stock!!!</strong>
+  </div>
   <h3>
     {{ product.name }}
-    <p class="text-danger" *ngIf="product.instock < 11">
-      only {{ product.instock }} in stock!!!
-    </p>
+
   </h3>
   <div class="cart-item">
     <span>Price</span>

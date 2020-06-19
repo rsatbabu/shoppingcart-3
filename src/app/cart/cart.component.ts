@@ -38,7 +38,7 @@ export class CartComponent implements OnInit {
    removeFromCart(productName: String) {
 
     this.cartService.removeFromCart(productName).subscribe((data) => {
-      window.alert('Congratulations!!! Your order will be shopped soon. ');
+      window.alert('Item has been removed!!!');
       this.router.navigate(['/cart']);
     });
 
