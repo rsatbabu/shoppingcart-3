@@ -1,0 +1,29 @@
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <h3>
+    {{ product.name }}
+    <p class="text-danger" *ngIf="product.instock < 11">
+      only {{ product.instock }} in stock!!!
+    </p>
+  </h3>
+  <div class="cart-item">
+    <span>Price</span>
+    <span>{{ product.price | currency }}</span>
+  </div>
+
+  <div class="cart-item">
+    <span>{{ product.description }}</span>
+  </div>
+  <form
+    [formGroup]="checkoutForm"
+    (ngSubmit)="addToCart(product, checkoutForm.value)"
+  >
+    <label for="quantity">
+      Quantity
+    </label>
+    <input id="quantity" type="text" formControlName="quantity" />
+
+    <button class="button" type="submit">Buy</button>
+  </form>
+</div>

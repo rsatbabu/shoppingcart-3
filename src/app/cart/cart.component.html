@@ -1,0 +1,19 @@
+<h2>Shopping Cart</h2>
+
+<h3>Cart</h3>
+
+<div class="cart-item" *ngFor="let orderDetail of orderDetails">
+  <span>{{ orderDetail.productName }}</span>
+  <span>{{ orderDetail.quantity  }}</span>
+  <span>{{ orderDetail.price | currency }}</span>
+
+  <span><button (click)="removeFromCart(orderDetail.productName )">Remove</button></span>
+</div>
+<button *ngIf="orderDetails && orderDetails.length >0" (click)="purchase()">
+  purchase
+</button>
+<div class="cart-item" *ngIf="!orderDetails || orderDetails.length ===0" >
+  Cart is empty :)
+</div>
+<a class="button fancy-button"  [routerLink]="['/']">continue shopping</a>
+
