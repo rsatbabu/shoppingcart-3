@@ -45,7 +45,7 @@ export class ProductDetailsComponent implements OnInit {
         (od) => od.productId === Number(params.get('id'))
       );
       this.http
-        .get<IProduct>(environment.apiUrl + '/products/' + params.get('id'))
+        .get<IProduct>(environment.productApiUrl + '/products/' + params.get('id'))
         .subscribe((data) => {
           this.product = data;
         });

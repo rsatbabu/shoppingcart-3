@@ -21,7 +21,7 @@ export class CartService {
       price: product.price,
     };
     return this.http.put<IOrderDetail[]>(
-      'http://localhost:8080/customerItems/' + environment.username,
+      environment.apiUrl + 'customerItems/' + environment.username,
       orderDetail
     );
   }
