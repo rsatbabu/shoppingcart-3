@@ -24,6 +24,7 @@
     </label>
     <input id="quantity" type="text" formControlName="quantity" />
 
-    <button class="button" type="submit">Buy</button>
+    <button class="button" *ngIf="edit === false" type="submit">Buy</button>
+    <button class="button" *ngIf="edit === true" type="submit">update</button>
   </form>
 </div>

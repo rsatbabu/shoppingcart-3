@@ -11,7 +11,7 @@ export class CartService {
   orderDetails: IOrderDetail[] = [];
   map = new Map();
 
-  addToCart(product: IProduct, quantity: number): Observable<IOrderDetail[]> {
+  updateCart(product: IProduct, quantity: number): Observable<IOrderDetail[]> {
     let orderDetail: IOrderDetail = {
       customerId: environment.username,
       orderId: 1,
@@ -21,24 +21,30 @@ export class CartService {
       price: product.price,
     };
     return this.http.put<IOrderDetail[]>(
-      'http://localhost:8080/customerItems/'+environment.username,
+      'http://localhost:8080/customerItems/' + environment.username,
       orderDetail
     );
   }
   getOrderDetails(): Observable<IOrderDetail[]> {
     console.log('cart service ');
     return this.http.get<IOrderDetail[]>(
-      environment.apiUrl + '/customerItems/'+environment.username
+      environment.apiUrl + '/customerItems/' + environment.username
     );
   }
 
-  removeFromCart(productName: String):Observable<any> {
-    return this.http.delete(environment.apiUrl + '/customerItems/'+environment.username+'/products/'+productName);
-
+  removeFromCart(productName: String): Observable<any> {
+    return this.http.delete(
+      environment.apiUrl +
+        '/customerItems/' +
+        environment.username +
+        '/products/' +
+        productName
+    );
   }
 
-  clearCart():Observable<any> {
-    return this.http.delete(environment.apiUrl + '/customerItems/'+environment.username);
-
+  clearCart(): Observable<any> {
+    return this.http.delete(
+      environment.apiUrl + '/customerItems/' + environment.username
+    );
   }
 }

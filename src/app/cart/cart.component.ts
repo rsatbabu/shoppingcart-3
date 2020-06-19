@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IOrderDetail, IProduct, IOrderEvent } from '../interfaces';
 import { environment } from '../../environments/environment';
-import { CartResolver } from '../resolvers/cartResolver';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -31,7 +31,11 @@ export class CartComponent implements OnInit {
     );
   }
 
-  async removeFromCart(productName: String) {
+  editCart(orderDetail: IOrderDetail){
+    this.router.navigate(['/products/'+orderDetail.productId]);
+  }
+
+   removeFromCart(productName: String) {
 
     this.cartService.removeFromCart(productName).subscribe((data) => {
       window.alert('Congratulations!!! Your order will be shopped soon. ');
@@ -56,8 +60,8 @@ export class CartComponent implements OnInit {
       .subscribe((data) => {
         console.log(data);
         this.cartService.clearCart().subscribe((data) =>{
-          window.alert('Congratulations!!! Your order will be shopped soon. ');
-          this.router.navigate(['/']);
+
+          this.router.navigate(['/purchase-complete']);
         });
 
       });

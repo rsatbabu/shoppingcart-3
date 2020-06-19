@@ -6,7 +6,7 @@
   <span>{{ orderDetail.productName }}</span>
   <span>{{ orderDetail.quantity  }}</span>
   <span>{{ orderDetail.price | currency }}</span>
-
+  <span><button (click)="editCart(orderDetail )">Edit</button></span>
   <span><button (click)="removeFromCart(orderDetail.productName )">Remove</button></span>
 </div>
 <button *ngIf="orderDetails && orderDetails.length >0" (click)="purchase()">

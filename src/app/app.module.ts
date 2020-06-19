@@ -10,6 +10,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './Cart/Cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PurchaseCompleteComponent } from './purchase-complete/purchase-complete.component';
 
 import { CartResolver } from './resolvers/cartResolver';
 
@@ -21,9 +22,12 @@ import { CartResolver } from './resolvers/cartResolver';
       RouterModule.forRoot([
 
         { path: '', component: ProductListComponent },
-        { path: 'products/:id', component: ProductDetailsComponent },
+        { path: 'products/:id', component: ProductDetailsComponent ,
+        resolve: { orderDetails: CartResolver }},
+
         { path: 'cart', component: CartComponent,
-        resolve: { orderDetails: CartResolver }, runGuardsAndResolvers: 'always', }
+        resolve: { orderDetails: CartResolver }, runGuardsAndResolvers: 'always', },
+        { path: 'purchase-complete', component: PurchaseCompleteComponent },
 
       ], { onSameUrlNavigation: 'reload' })
    ],
