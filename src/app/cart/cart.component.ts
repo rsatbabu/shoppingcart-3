@@ -21,12 +21,16 @@ export class CartComponent implements OnInit {
   ) {}
 
   orderDetails: IOrderDetail[];
+  total : Number;
 
   ngOnInit() {
     this.activatedRoute.data.subscribe(
       (data: { orderDetails: IOrderDetail[] }) => {
         this.orderDetails = data.orderDetails;
 
+        this.total = this.orderDetails.reduce(function (accumulator, orderDetail) {
+          return accumulator + orderDetail.totalPrice;
+        }, 0);
       }
     );
   }

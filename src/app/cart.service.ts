@@ -19,6 +19,7 @@ export class CartService {
       productName: product.name,
       quantity: quantity,
       price: product.price,
+      totalPrice:Number(quantity)*Number(product.price)
     };
     return this.http.put<IOrderDetail[]>(
       environment.apiUrl + 'cartItems/customer/' + environment.username,

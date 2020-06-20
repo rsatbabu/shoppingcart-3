@@ -13,6 +13,7 @@ export interface IOrderDetail {
     productId: number;
     quantity: number;
     price : number;
+    totalPrice:number;
 }
 export interface IOrderEvent{
   customerId: string;
