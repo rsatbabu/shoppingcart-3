@@ -19,13 +19,17 @@
     </td>
     <td>{{ orderDetail.quantity | number }}</td>
     <td>{{  orderDetail.price | currency }}</td>
-    <td>{{  orderDetail.totalPrice  | number  }}</td>
+    <td>{{  orderDetail.totalPrice  | currency  }}</td>
     <td><button class="btn btn-link" (click)="editCart(orderDetail )">Edit</button></td>
     <td><button class="btn btn-info" (click)="removeFromCart(orderDetail.productName )">Remove</button></td>
   </tr>
   </tbody>
 </table>
-{{total}}
+<div class="cart-item">
+  <span>Sum Total </span>
+  <span>{{ total | currency }}</span>
+</div>
+
 <button *ngIf="orderDetails && orderDetails.length >0" (click)="purchase()">
   purchase
 </button>
