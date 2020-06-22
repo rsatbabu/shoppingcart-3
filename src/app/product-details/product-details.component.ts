@@ -67,7 +67,7 @@ export class ProductDetailsComponent implements OnInit {
     this.cartService
       .updateCart(product, customerData['quantity'])
       .subscribe((data) => {
-        window.alert(product.name + ' has been added to your cart!');
+
         this.router.navigate(['/cart']);
       });
   }

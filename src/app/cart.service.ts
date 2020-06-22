@@ -22,20 +22,20 @@ export class CartService {
       totalPrice:Number(quantity)*Number(product.price)
     };
     return this.http.put<IOrderDetail[]>(
-      environment.apiUrl + 'cartItems/customer/' + environment.username,
+      environment.cartApiUrl + '/cartItems/customer/' + environment.username,
       orderDetail
     );
   }
   getOrderDetails(): Observable<IOrderDetail[]> {
     console.log('cart service ');
     return this.http.get<IOrderDetail[]>(
-      environment.apiUrl + '/cartItems/customer/' + environment.username
+      environment.cartApiUrl + '/cartItems/customer/' + environment.username
     );
   }
 
   removeFromCart(productName: String): Observable<any> {
     return this.http.delete(
-      environment.apiUrl +
+      environment.cartApiUrl +
         '/cartItems/customer/' +
         environment.username +
         '/products/' +
@@ -45,7 +45,7 @@ export class CartService {
 
   clearCart(): Observable<any> {
     return this.http.delete(
-      environment.apiUrl + '/cartItems/customer/' + environment.username
+      environment.cartApiUrl + '/cartItems/customer/' + environment.username
     );
   }
 }

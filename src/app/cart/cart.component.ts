@@ -40,11 +40,13 @@ export class CartComponent implements OnInit {
   }
 
    removeFromCart(productName: String) {
+    if( window.confirm(productName+' will be removed from cart?')){
+      this.cartService.removeFromCart(productName).subscribe((data) => {
 
-    this.cartService.removeFromCart(productName).subscribe((data) => {
-      window.alert('Item has been removed!!!');
-      this.router.navigate(['/cart']);
+        this.router.navigate(['/cart']);
     });
+    }
+
 
     console.log(this.orderDetails.length);
   }
@@ -60,7 +62,7 @@ export class CartComponent implements OnInit {
       orderEvents.push(orderEvent);
     });
     this.http
-      .post(environment.apiUrl + 'orderEvents', orderEvents)
+      .post(environment.cartApiUrl + '/orderEvents', orderEvents)
       .subscribe((data) => {
         console.log(data);
         this.cartService.clearCart().subscribe((data) =>{

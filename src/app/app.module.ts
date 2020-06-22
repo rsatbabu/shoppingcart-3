@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PurchaseCompleteComponent } from './purchase-complete/purchase-complete.component';
 
 import { CartResolver } from './resolvers/cartResolver';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
    imports: [
@@ -29,7 +30,8 @@ import { CartResolver } from './resolvers/cartResolver';
         resolve: { orderDetails: CartResolver }, runGuardsAndResolvers: 'always', },
         { path: 'purchase-complete', component: PurchaseCompleteComponent },
 
-      ], { onSameUrlNavigation: 'reload' })
+      ], { onSameUrlNavigation: 'reload' }),
+      NoopAnimationsModule
    ],
    declarations: [
       AppComponent,
