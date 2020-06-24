@@ -62,7 +62,7 @@ export class CartComponent implements OnInit {
       orderEvents.push(orderEvent);
     });
     this.http
-      .post(environment.cartApiUrl + '/orderEvents', orderEvents)
+      .post(environment.eventAPIUrl + '/orderEvents', orderEvents)
       .subscribe((data) => {
         console.log(data);
         this.cartService.clearCart().subscribe((data) =>{

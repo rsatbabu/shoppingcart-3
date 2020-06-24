@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  cartApiUrl: 'http://localhost:8080/shopping-events',
+  eventAPIUrl:'http://localhost:8080/shopping-events',
+  cartApiUrl: 'http://localhost:8080/shopping-cart',
   productApiUrl: 'http://localhost:8080/shopping-products',
   username:'Lokesh'
 
